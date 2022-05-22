@@ -66,7 +66,7 @@ let timeLeft = document.querySelector(".time-left");
 let showQuestions = document.querySelector(".show-questions");
 // showAnswers is equal to the elements in the "show-answers" class.  Here, a section.
 let showAnswers = document.querySelector(".show-answers");
-
+// results is equal to 
 let results = document.querySelector("#results");
 
 // Global variable for time (100 seconds).
@@ -92,6 +92,9 @@ function countDown() {
             clearInterval(timer);
             // If the seconds left are <= 0, show this message:
             timeLeft.textContent = "Sorry, there's no time left!";
+            showQuestions.style.display = "none";
+            showAnswers.style.display = "none";
+            results.style.display = "none";
             // Let the user know that the game is over.
             // alert("Sorry, time's up!  Let's see your score.");
             // Execute in-game function to show score and type in initials.
@@ -105,6 +108,10 @@ function countDown() {
 function displayQuestions() {
     showQuestions.textContent = questionArray[questionIndex].Q;
     // console.log(showAnswers);
+    // for (i = 0; i < questionArray[questionIndex].A.length; i++) {
+    //     let answerButton = document.createElement("button");
+    //     answer
+    // };
     for (let i = 0; i < questionArray[questionIndex].A.length; i++) {
         let answerButton = document.createElement("button");
         answerButton.textContent = questionArray[questionIndex].A[i];
@@ -126,6 +133,9 @@ function displayQuestions() {
         console.log();
     }
 
+    showQuestions.style.display = "none";
+    showAnswers.style.display = "none";
+    results.style.display = "none";
     // showAnswers.textContent = questionArray[questionIndex].A;
     // showAnswers.append = questionArray[questionIndex].B;
     // showAnswers.append = questionArray[questionIndex].C;
