@@ -15,10 +15,10 @@ const questionArray = [
     {
         Q: "TestingQ2",
         A: [
-            "Testing2",
-            "Testing3",
-            "Testing4",
-            "Testing5"
+            "Testing2-2",
+            "Testing3-2",
+            "Testing4-2",
+            "Testing5-2"
         ],
         Correct: "Correct answer here."
     },
@@ -66,11 +66,14 @@ let timeLeft = document.querySelector(".time-left");
 let showQuestions = document.querySelector(".show-questions");
 // showAnswers is equal to the elements in the "show-answers" class.  Here, a section.
 let showAnswers = document.querySelector(".show-answers");
-// results is equal to 
+// results is equal to the "results" id.  Here, a span.
 let results = document.querySelector("#results");
 
+let doneButton = document.querySelector(".done");
+doneButton.style.display = "none";
+
 // Global variable for time (100 seconds).
-let secondsLeft = 100;
+let secondsLeft = 10;
 
 // The start button being clicked begins the countDown and displayQuestions functions.
 startButton.addEventListener("click", function () {
@@ -80,21 +83,25 @@ startButton.addEventListener("click", function () {
     startButton.style.display = "none";
 });
 
+
+
 // Create a function that starts the timer
 // The countDown function sets a timer that ticks down once per second until the seconds reach 0.
 function countDown() {
     let timer = setInterval(function () {
-        secondsLeft--;
         timeLeft.textContent = secondsLeft + " seconds left to finish the quiz!";
+        secondsLeft--;
 
         if (secondsLeft <= 0) {
             // Clear the timer once there's no time left.
             clearInterval(timer);
             // If the seconds left are <= 0, show this message:
-            timeLeft.textContent = "Sorry, there's no time left!";
+            timeLeft.textContent = 'Sorry, there is no time left! Click "Done" to view your score.';
             showQuestions.style.display = "none";
             showAnswers.style.display = "none";
             results.style.display = "none";
+            doneButton.style.display = "inline-block";
+            console.log(doneButton);
             // Let the user know that the game is over.
             // alert("Sorry, time's up!  Let's see your score.");
             // Execute in-game function to show score and type in initials.
@@ -107,11 +114,7 @@ function countDown() {
 // Create a function that displays questions
 function displayQuestions() {
     showQuestions.textContent = questionArray[questionIndex].Q;
-    // console.log(showAnswers);
-    // for (i = 0; i < questionArray[questionIndex].A.length; i++) {
-    //     let answerButton = document.createElement("button");
-    //     answer
-    // };
+    console.log(showAnswers);
     for (let i = 0; i < questionArray[questionIndex].A.length; i++) {
         let answerButton = document.createElement("button");
         answerButton.textContent = questionArray[questionIndex].A[i];
@@ -119,23 +122,26 @@ function displayQuestions() {
         answerButton.onclick = function checkAnswers() {
             // If the submission is equal to Correct...
             if (answerButton.innerText === questionArray[questionIndex].Correct) {
+                // ...show this confirmation message.
                 results.textContent = "Right on, popcorn! That's correct.";
                 console.log(checkAnswers);
-                displayQuestions();
+                return true;
+                // displayQuestions();
+                // If the submission is not equal to Correct...
             } else {
+                // ...show this error message and...
                 results.textContent = "Sorry, no such luck. Try again!";
+                // ...deduct 10 seconds from the clock.
                 secondsLeft -= 10;
             }
         };
-        // displayQuestions();
-        // console.log(answerButton);
         showAnswers.appendChild(answerButton);
-        console.log();
     }
+    console.log(displayQuestions);
 
-    showQuestions.style.display = "none";
-    showAnswers.style.display = "none";
-    results.style.display = "none";
+    // showQuestions.style.display = "none";
+    // showAnswers.style.display = "none";
+    // results.style.display = "none";
     // showAnswers.textContent = questionArray[questionIndex].A;
     // showAnswers.append = questionArray[questionIndex].B;
     // showAnswers.append = questionArray[questionIndex].C;
