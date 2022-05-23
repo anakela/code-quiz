@@ -98,6 +98,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 - [W3Schools: Style display Property](https://www.w3schools.com/jsref/prop_style_display.asp)
 - [JSFiddle: Running Clock Demo](http://jsfiddle.net/alnitak/aBWce/)
 - [Stack Overflow: How do I get my for loop to go through my array of objects?](https://stackoverflow.com/questions/72336180/how-do-i-get-my-for-loop-to-go-through-my-array-of-objects) - I asked this question.
+- [MDN Web Docs: What is JavaScript?](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript)
 
 ## Author
 

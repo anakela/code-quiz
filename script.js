@@ -3,34 +3,34 @@
 // An array of objects containing questions, answers, and the correct answers.
 const questionArray = [
     {
-        Q: "TestingQ1",
+        Q: "Which method would you use to stop a running clock in JavaScript?",
         A: [
-            "Testing2",
-            "Testing3",
-            "Testing4",
-            "Testing5"
+            "setInterval()",
+            "splice()",
+            "clearInterval()",
+            "setTimeout()"
         ],
-        Correct: "Testing2"
+        Correct: "clearInterval()"
     },
     {
-        Q: "TestingQ2",
+        Q: "Which two parameters does the addEventListener() method take?",
         A: [
-            "Testing2-2",
-            "Testing3-2",
-            "Testing4-2",
-            "Testing5-2"
+            "Two: type, listener",
+            "Three: type, listener, options",
+            "Three: type, listener, useCapture",
+            "All options are correct."
         ],
-        Correct: "Testing3-2"
+        Correct: "All options are correct."
     },
     {
-        Q: "TestingQ3",
+        Q: "What is JavaScript?",
         A: [
-            "Testing2",
-            "Testing3",
-            "Testing4",
-            "Testing5"
+            "It's another way of referring to Cascading Style Sheets.",
+            "A scripting or programming language that allows you to implement complex features on web pages.",
+            "Coffee-flavored text",
+            "It's the same thing as the Java language."
         ],
-        Correct: "Correct answer here."
+        Correct: "A scripting or programming language that allows you to implement complex features on web pages."
     },
     {
         Q: "TestingQ4",
@@ -67,15 +67,21 @@ let showQuestions = document.querySelector(".show-questions");
 let showAnswers = document.querySelector(".show-answers");
 // yourScore is equal to the "scores" class.  Here, an aside.
 let yourScore = document.querySelector(".your-score");
+// Initially hide the Your Scores aside.
+yourScore.style.display = "none";
 // pointsCounter is equal to the "points-counter" span.
 let pointsCounter = document.querySelector(".points-counter");
 // Set current points to zero.
 let currentPoints = 0;
 // results is equal to the "results" id.  Here, a span.
 let results = document.querySelector("#results");
-
+// doneButton is equivalent to the "done" button.
 let doneButton = document.querySelector(".done");
+// Initially hide the doneButton.
 doneButton.style.display = "none";
+// Initially hide the High Scores aside.
+let highScores = document.querySelector("#high-scores");
+highScores.style.display = "none";
 
 // Global variable for time (60 seconds).
 let secondsLeft = 60;
@@ -113,7 +119,7 @@ function countDown() {
     }, 1000);
 }
 
-// Create a function that displays questions
+// This function displays the questions from the array and presents the answers.
 function displayQuestions() {
     showQuestions.textContent = questionArray[questionIndex].Q;
     console.log(showAnswers);
@@ -126,37 +132,18 @@ function displayQuestions() {
             if (answerButton.innerText === questionArray[questionIndex].Correct) {
                 // ...show this confirmation message.
                 results.textContent = "Right on, popcorn! That's correct.";
+                // ...add 10 points to the score.
                 currentPoints += 10;
+                // ...display the total current points.
                 pointsCounter.textContent = currentPoints;
-                // questionIndex++;
-                // ...if the questionIndex is less than the length of the questionArray...
-                if (questionIndex < questionArray.lengh-1) {
-                    // ...increment the questionIndex.
-                    questionIndex++;
-                    console.log(checkAnswers);
-                    // ...clear the showAnswers section.
-                    showAnswers.innerHTML = '';
-                    // ...display the next question.
-                    displayQuestions();
-                    // console.log(checkAnswers);
-                // If the questionIndex is not less than the length of the questionArray, end the game.
-                } else {
-                    // Show scoreboard
-                    pointsCounter.textContent = currentPoints;
-                    // End the game.
-                    // secondsLeft = 0;
-                }
-            // If the submission is not equal to Correct...
-            } else {
-                // ...show this error message and...
-                results.textContent = "Sorry, no such luck.";
                 // ...if the questionIndex is less than the length of the questionArray...
                 if (questionIndex < questionArray.length-1) {
                     // ...increment the questionIndex.
                     questionIndex++;
-                    // ...deduct 10 seconds from the clock.
-                    secondsLeft -= 10;
+                    // ...clear the showAnswers section.
                     showAnswers.innerHTML = '';
+                    // ...display the next question.
+                    console.log("Testing, 1, 2, 3...");
                     displayQuestions();
                 // If the questionIndex is not less than the length of the questionArray, end the game.
                 } else {
@@ -164,6 +151,30 @@ function displayQuestions() {
                     pointsCounter.textContent = currentPoints;
                     // End the game.
                     secondsLeft = 0;
+                    timeLeft.textContent = 'Sorry, there is no time left! Click "Done" to view your score.';
+                    // displayQuestions();
+                }
+            // If the submission is not equal to Correct...
+            } else {
+                // ...show this error message and...
+                results.textContent = "Negative, Ghost Rider. That's incorrect.";
+                // ...if the questionIndex is less than the length of the questionArray...
+                if (questionIndex < questionArray.length-1) {
+                    // ...increment the questionIndex.
+                    questionIndex++;
+                    // ...deduct 10 seconds from the clock.
+                    secondsLeft -= 10;
+                    // ...clear the showAnswers section.
+                    showAnswers.innerHTML = '';
+                    // ...display the next question.
+                    displayQuestions();
+                // If the questionIndex is not less than the length of the questionArray, end the game.
+                } else {
+                    // Show scoreboard
+                    pointsCounter.textContent = currentPoints;
+                    // End the game.
+                    secondsLeft = 0;
+                    timeLeft.textContent = '';
                 }
             }
         };
@@ -172,18 +183,6 @@ function displayQuestions() {
     }
     console.log(displayQuestions);
 }
-    // Check answer, subtract or add points, then update the indexTracking by 1.
-
-
-// WHEN I answer a question
-// Add a variable for user input (multiple choice: buttons, radios, etc.?)
-
-// THEN I am presented with another question
-// Loop through and present another question
-
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
-// If the result is false, deduct time from the clock (global variable; can resue this)
 
 // WHEN all questions are answered or the timer reaches 0
 // THEN the game is over
