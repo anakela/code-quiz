@@ -53,14 +53,6 @@
 
 ![](./screenshot.jpg)
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
-
 ### Links
 
 - Solution URL: [https://github.com/anakela/code-quiz](https://github.com/anakela/code-quiz)
@@ -73,7 +65,6 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Semantic HTML5 markup
 - CSS
 - JavaScript
-- jQuery
 
 ### What I Learned
 
@@ -103,8 +94,10 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ### Useful Resources
 
-- [W3Schools: onclick Event](https://www.w3schools.com/jsref/event_onclick.asp)
+- [W3Schools: onclick Event](https://www.w3schools.com/jsref/event_onclick.asp)+
+- [W3Schools: Style display Property](https://www.w3schools.com/jsref/prop_style_display.asp)
 - [JSFiddle: Running Clock Demo](http://jsfiddle.net/alnitak/aBWce/)
+- [Stack Overflow: How do I get my for loop to go through my array of objects?](https://stackoverflow.com/questions/72336180/how-do-i-get-my-for-loop-to-go-through-my-array-of-objects) - I asked this question.
 
 ## Author
 

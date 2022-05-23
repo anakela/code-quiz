@@ -57,6 +57,7 @@ const questionArray = [
 
 // Set to zero to target the first index in an array of objects.
 let questionIndex = 0;
+
 // startButton is equal to elements with the "start" class.  Here, button.
 let startButton = document.querySelector(".start");
 // timeLeft is equal to elements with the "time=left" class.  Here, the h2 tag.
@@ -65,20 +66,14 @@ let timeLeft = document.querySelector(".time-left");
 let showQuestions = document.querySelector(".show-questions");
 // showAnswers is equal to the elements in the "show-answers" class.  Here, a section.
 let showAnswers = document.querySelector(".show-answers");
-// yourScore is equal to the "scores" class.  Here, an aside.
-let yourScore = document.querySelector(".your-score");
-// pointsCounter is equal to the "points-counter" span.
-let pointsCounter = document.querySelector(".points-counter");
-// Set current points to zero.
-let currentPoints = 0;
 // results is equal to the "results" id.  Here, a span.
 let results = document.querySelector("#results");
 
 let doneButton = document.querySelector(".done");
 doneButton.style.display = "none";
 
-// Global variable for time (60 seconds).
-let secondsLeft = 60;
+// Global variable for time (100 seconds).
+let secondsLeft = 100;
 
 // The start button being clicked begins the countDown and displayQuestions functions.
 startButton.addEventListener("click", function () {
@@ -86,7 +81,6 @@ startButton.addEventListener("click", function () {
     displayQuestions();
     // Hide the start button
     startButton.style.display = "none";
-    yourScore.style.display = "flex";
 });
 
 // The countDown function sets a timer that ticks down once per second until the seconds reach 0.
@@ -126,44 +120,27 @@ function displayQuestions() {
             if (answerButton.innerText === questionArray[questionIndex].Correct) {
                 // ...show this confirmation message.
                 results.textContent = "Right on, popcorn! That's correct.";
-                currentPoints += 10;
-                pointsCounter.textContent = currentPoints;
-                // questionIndex++;
-                // ...if the questionIndex is less than the length of the questionArray...
                 if (questionIndex < questionArray.lengh-1) {
-                    // ...increment the questionIndex.
                     questionIndex++;
+                    // questionIndex++;
                     console.log(checkAnswers);
-                    // ...clear the showAnswers section.
                     showAnswers.innerHTML = '';
-                    // ...display the next question.
                     displayQuestions();
-                    // console.log(checkAnswers);
-                // If the questionIndex is not less than the length of the questionArray, end the game.
                 } else {
                     // Show scoreboard
-                    pointsCounter.textContent = currentPoints;
-                    // End the game.
-                    // secondsLeft = 0;
                 }
-            // If the submission is not equal to Correct...
+                // If the submission is not equal to Correct...
             } else {
                 // ...show this error message and...
                 results.textContent = "Sorry, no such luck.";
-                // ...if the questionIndex is less than the length of the questionArray...
                 if (questionIndex < questionArray.length-1) {
-                    // ...increment the questionIndex.
                     questionIndex++;
                     // ...deduct 10 seconds from the clock.
                     secondsLeft -= 10;
                     showAnswers.innerHTML = '';
                     displayQuestions();
-                // If the questionIndex is not less than the length of the questionArray, end the game.
                 } else {
                     // Show scoreboard
-                    pointsCounter.textContent = currentPoints;
-                    // End the game.
-                    secondsLeft = 0;
                 }
             }
         };
