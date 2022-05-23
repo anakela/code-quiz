@@ -3,7 +3,7 @@
 // An array of objects containing questions, answers, and the correct answers.
 const questionArray = [
     {
-        Q: "Which method would you use to stop a running clock in JavaScript?",
+        Q: "To stop a setInterval() method, you would use the ________________ method.",
         A: [
             "setInterval()",
             "splice()",
@@ -13,44 +13,44 @@ const questionArray = [
         Correct: "clearInterval()"
     },
     {
-        Q: "Which two parameters does the addEventListener() method take?",
+        Q: "The eventTarget.addEventListener() method takes the following parameters: ___________________.",
         A: [
-            "Two: type, listener",
-            "Three: type, listener, options",
-            "Three: type, listener, useCapture",
+            "type, listener",
+            "type, listener, options",
+            "type, listener, useCapture",
             "All options are correct."
         ],
         Correct: "All options are correct."
     },
     {
-        Q: "What is JavaScript?",
+        Q: "JavaScript is _________________.",
         A: [
-            "It's another way of referring to Cascading Style Sheets.",
-            "A scripting or programming language that allows you to implement complex features on web pages.",
-            "Coffee-flavored text",
-            "It's the same thing as the Java language."
+            "another way of referring to Cascading Style Sheets",
+            "a scripting or programming language that allows you to implement complex features on web pages",
+            "a movie script that smells and tastes like coffee",
+            "the same thing as the Java language"
         ],
-        Correct: "A scripting or programming language that allows you to implement complex features on web pages."
+        Correct: "a scripting or programming language that allows you to implement complex features on web pages"
     },
     {
-        Q: "TestingQ4",
+        Q: "JavaScript data types include _______________, number, boolean, object, and undefined.",
         A: [
-            "Testing2",
-            "Testing3",
-            "Testing4",
-            "Testing5"
+            "string",
+            "null",
+            "var",
+            "text"
         ],
-        Correct: "Correct answer here."
+        Correct: "string"
     },
     {
-        Q: "TestingQ5",
+        Q: "Another version of JavaScript that can be used in its place is _____________.",
         A: [
-            "Testing2",
-            "Testing3",
-            "Testing4",
-            "Testing5"
+            "Bootstrap",
+            "GitHub",
+            "bubbling",
+            "jQuery"
         ],
-        Correct: "Correct answer here."
+        Correct: "jQuery"
     }
 
 ];
@@ -75,21 +75,41 @@ let pointsCounter = document.querySelector(".points-counter");
 let currentPoints = 0;
 // results is equal to the "results" id.  Here, a span.
 let results = document.querySelector("#results");
-// doneButton is equivalent to the "done" button.
-let doneButton = document.querySelector(".done");
-// Initially hide the doneButton.
-doneButton.style.display = "none";
+
+let submitForm = document.querySelector("#scores-form");
+submitForm.style.display = "none";
+
+let initsInput = document.querySelector("#inits");
+
+let viewScores = document.querySelector("#view-scores");
+
+// submitButton is equivalent to the "done" button.
+let submitButton = document.querySelector("#submit");
+// Initially hide the submitButton.
+// submitButton.style.display = "none";
+
+
+// endGame is equivalent to the "end game" h2 tag.
+let endGame = document.querySelector("#end-game");
+// Initially hide the endGame h2 tag.
+// endGame.style.display = "none";
 // Initially hide the High Scores aside.
 let highScores = document.querySelector("#high-scores");
 highScores.style.display = "none";
 
+let viewHighScores = document.querySelector("#view-high-scores");
+
+// Global array for objects
+let highScoreArr;
+
 // Global variable for time (60 seconds).
-let secondsLeft = 60;
+let secondsLeft = 30;
 
 // The start button being clicked begins the countDown and displayQuestions functions.
 startButton.addEventListener("click", function () {
     countDown();
     displayQuestions();
+    // endTheGame();
     // Hide the start button
     startButton.style.display = "none";
     yourScore.style.display = "flex";
@@ -101,16 +121,16 @@ function countDown() {
         timeLeft.textContent = secondsLeft + " seconds left to finish the quiz!";
         secondsLeft--;
 
-        if (secondsLeft <= 0) {
-            // Clear the timer once there's no time left.
-            clearInterval(timer);
+        if (secondsLeft <= 0 || questionIndex === questionArray.length) {
             // If the seconds left are <= 0, show this message:
-            timeLeft.textContent = 'Sorry, there is no time left! Click "Done" to view your score.';
+            timeLeft.textContent = 'Nice work! Click the button below to view your score.';
             showQuestions.style.display = "none";
             showAnswers.style.display = "none";
             results.style.display = "none";
-            doneButton.style.display = "inline-block";
-            console.log(doneButton);
+            submitForm.style.display = "block";
+            // submitButton.style.display = "inline-block";
+            // Clear the timer once there's no time left.
+            clearInterval(timer);
             // Let the user know that the game is over.
             // alert("Sorry, time's up!  Let's see your score.");
             // Execute in-game function to show score and type in initials.
@@ -126,6 +146,7 @@ function displayQuestions() {
     for (let i = 0; i < questionArray[questionIndex].A.length; i++) {
         let answerButton = document.createElement("button");
         answerButton.textContent = questionArray[questionIndex].A[i];
+
         // Define the function here to check the answers
         answerButton.onclick = function checkAnswers() {
             // If the submission is equal to Correct...
@@ -137,29 +158,29 @@ function displayQuestions() {
                 // ...display the total current points.
                 pointsCounter.textContent = currentPoints;
                 // ...if the questionIndex is less than the length of the questionArray...
-                if (questionIndex < questionArray.length-1) {
+                if (questionIndex < questionArray.length) {
                     // ...increment the questionIndex.
                     questionIndex++;
                     // ...clear the showAnswers section.
                     showAnswers.innerHTML = '';
                     // ...display the next question.
-                    console.log("Testing, 1, 2, 3...");
                     displayQuestions();
-                // If the questionIndex is not less than the length of the questionArray, end the game.
+                    // If the questionIndex is not less than the length of the questionArray, end the game.
                 } else {
                     // Show scoreboard
                     pointsCounter.textContent = currentPoints;
                     // End the game.
-                    secondsLeft = 0;
-                    timeLeft.textContent = 'Sorry, there is no time left! Click "Done" to view your score.';
+                    // secondsLeft = 0;
+                    // timeLeft.textContent = 'Nice work! Click "Done" to enter your score.';
+                    // endTheGame();
                     // displayQuestions();
                 }
-            // If the submission is not equal to Correct...
+                // If the submission is not equal to Correct...
             } else {
                 // ...show this error message and...
                 results.textContent = "Negative, Ghost Rider. That's incorrect.";
                 // ...if the questionIndex is less than the length of the questionArray...
-                if (questionIndex < questionArray.length-1) {
+                if (questionIndex < questionArray.length) {
                     // ...increment the questionIndex.
                     questionIndex++;
                     // ...deduct 10 seconds from the clock.
@@ -168,20 +189,69 @@ function displayQuestions() {
                     showAnswers.innerHTML = '';
                     // ...display the next question.
                     displayQuestions();
-                // If the questionIndex is not less than the length of the questionArray, end the game.
+                    // If the questionIndex is not less than the length of the questionArray, end the game.
                 } else {
                     // Show scoreboard
                     pointsCounter.textContent = currentPoints;
                     // End the game.
-                    secondsLeft = 0;
-                    timeLeft.textContent = '';
+                    // secondsLeft = 0;
+                    // timeLeft.textContent = 'Nice work! Click the button below to enter your score.';
+                    // timeLeft.textContent = '';
+                    // endTheGame();
                 }
             }
-        };
+        }
         showAnswers.appendChild(answerButton);
-        
+
     }
     console.log(displayQuestions);
+}
+
+
+
+// End the game when either the clock runs out, or the user goes through all questions.
+
+submitButton.onclick = function storeScores(event) {
+    event.preventDefault();
+    // Create an object to store initials and scores
+    let userScores = {
+        initials: initsInput.value,
+        score: currentPoints
+    };
+
+    // Parse data in localStorage in my highScoreArr array.
+    highScoreArr = JSON.parse(localStorage.getItem("userScores"));
+    console.log(highScoreArr);
+    if (highScoreArr === null) {
+        highScoreArr = [userScores];
+    } else {
+        for (let i = 0; i < highScoreArr.length; i++) {
+            if (userScores.score >= highScoreArr[i].score) {
+                highScoreArr.splice(i, 0, userScores);
+                break;
+            } else if (i === highScoreArr.length-1 && userScores.score < highScoreArr[i]) {
+                highScoreArr.push(userScores);
+                break;
+            }
+        }
+    }
+
+    console.log(highScoreArr);
+    // Store the initials and score in the object.
+    localStorage.setItem("userScores", JSON.stringify(highScoreArr));
+    // Clear the initials input field.
+    initsInput.value = '';
+}
+
+viewScores.onclick = function (event) {
+    event.preventDefault();
+    let highScoreArr2 = JSON.parse(localStorage.getItem("userScores"));
+    viewHighScores.innerHTML = highScoreArr2;
+    console.log(highScoreArr2[0].initials);
+    let scoreLineItem = document.createElement("li");
+    scoreLineItem.textContent(`${highScoreArr2[0].initials}: ${highScoreArr2[0].score}`);
+    results.appendChild(scoreLineItem);
+    highScores.style.display = "flex";
 }
 
 // WHEN all questions are answered or the timer reaches 0

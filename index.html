@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,30 +8,52 @@
     <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
+
 <body>
+    <!-- Header -->
     <header id="header">
         <h1 class="question-title">JavaScript Quiz</h1>
     </header>
     <main id="main">
-        
-        <h2 class="time-left">Click the "Start" button to begin the quiz.</h2>
-        <section class="start-button">
+        <section class="start-game">
+            <h2 class="time-left">Click the "Start" button to begin the quiz.</h2>
+            <!-- <h2 id="end-game"></h2> -->
             <button class="start">Start</button>
         </section>
+
+        <!-- Show Questions -->
         <section class="show-questions"></section>
+
+        <!-- Show Answers -->
         <section class="show-answers"></section>
+
+        <!-- Your Score Aside -->
         <aside class="your-score">
             <h2>Your Score</h2>
             <p class="points-counter"></p>
         </aside>
+
+        <!-- High Scores Aside -->
         <aside id="high-scores">
             <h2>High Scores</h2>
+            <div id="view-high-scores"></div>
         </aside>
-        <button class="done">Done</button>
-        <span id="results"></span>
+
+        <!-- Submit Form -->
+        <form action="" id="scores-form">
+            <label for="initials">Enter Your Initials:</label>
+            <input type="text" id="inits" placeholder="Enter your initials here."/><br />
+            <input type="button" value="Submit" id="submit"/>
+            <input type="button" value="View All Scores" id="view-scores">
+            <!-- <input type="button" value="Submit" id="submit"/> -->
+        </form>
+
+        <!-- <button class="submit">Submit</button> -->
+        <ol id="results"></ol>
     </main>
 
     <script src="./script.js"></script>
     <!-- <script src="./script2.js"></script> -->
 </body>
+
 </html>
