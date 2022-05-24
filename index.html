@@ -12,46 +12,52 @@
 <body>
     <!-- Header -->
     <header id="header">
-        <h1 class="question-title">JavaScript Quiz</h1>
+        <h1 id="question-title">JavaScript Quiz</h1>
     </header>
     <main id="main">
-        <section class="start-game">
-            <h2 class="time-left">Click the "Start" button to begin the quiz.</h2>
+        <section id="start-game">
+            <h2 id="time-left">Click the "Start" button to begin the quiz.</h2>
             <!-- <h2 id="end-game"></h2> -->
-            <button class="start">Start</button>
+            <button id="start">Start</button>
         </section>
 
         <!-- Show Questions -->
-        <section class="show-questions"></section>
+        <section id="show-questions"></section>
 
         <!-- Show Answers -->
-        <section class="show-answers"></section>
+        <section id="show-answers"></section>
 
         <!-- Your Score Aside -->
-        <aside class="your-score">
-            <h2>Your Score</h2>
-            <p class="points-counter"></p>
+        <aside class="container" id="your-score">
+            <p>Your Score: </p>
+            <p id="points-counter"></p><br />
+            <p id="results"></p>
         </aside>
 
         <!-- High Scores Aside -->
-        <aside id="high-scores">
+        <aside class="container" id="high-scores">
             <h2>High Scores</h2>
             <ol id="view-high-scores"></ol>
         </aside>
 
         <!-- Submit Form -->
         <form action="" id="scores-form">
-            <label for="initials">Enter Your Initials:</label>
+            <label for="initials" id="inits-label">Enter Your Initials:</label>
             <input type="text" id="inits" placeholder="Enter your initials here."/><br />
             <input class="form-btn" type="button" value="Submit" id="submit"/>
-            <input class="form-btn" type="button" value="View All Scores" id="view-scores">
-            <input class="form-btn" type="button" value="Try Again" id="try-again">
+            <!-- <input class="form-btn" type="button" value="View All Scores" id="view-scores">
+            <input class="form-btn" type="button" value="Try Again" id="try-again"> -->
             <!-- <input type="button" value="Submit" id="submit"/> -->
         </form>
 
+        <!-- View Scores & Try Again -->
+        <section id="other-buttons">
+            <button id="view-scores">View High Scores</button>
+            <button id="try-again">Try Again</button>
+        </section>
+
         <!-- <button class="submit">Submit</button> -->
     </main>
-    <ol id="results"></ol>
 
     <script src="./script.js"></script>
     <!-- <script src="./script2.js"></script> -->

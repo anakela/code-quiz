@@ -57,36 +57,47 @@ const questionArray = [
 
 // Set to zero to target the first index in an array of objects.
 let questionIndex = 0;
+
+let startGame = document.querySelector("#start-game");
 // startButton is equal to elements with the "start" class.  Here, button.
-let startButton = document.querySelector(".start");
+let startButton = document.querySelector("#start");
 // timeLeft is equal to elements with the "time=left" class.  Here, the h2 tag.
-let timeLeft = document.querySelector(".time-left");
+let timeLeft = document.querySelector("#time-left");
 // showQuestions is equal to elements with the "show-questions" class.  Here, a section.
-let showQuestions = document.querySelector(".show-questions");
+let showQuestions = document.querySelector("#show-questions");
 // showAnswers is equal to the elements in the "show-answers" class.  Here, a section.
-let showAnswers = document.querySelector(".show-answers");
+let showAnswers = document.querySelector("#show-answers");
 // yourScore is equal to the "scores" class.  Here, an aside.
-let yourScore = document.querySelector(".your-score");
+let yourScore = document.querySelector("#your-score");
 // Initially hide the Your Scores aside.
 yourScore.style.display = "none";
 // pointsCounter is equal to the "points-counter" span.
-let pointsCounter = document.querySelector(".points-counter");
+let pointsCounter = document.querySelector("#points-counter");
 // Set current points to zero.
 let currentPoints = 0;
 // results is equal to the "results" id.  Here, a span.
 let results = document.querySelector("#results");
 
+// submitForm is equal to the "scores-form" form.
 let submitForm = document.querySelector("#scores-form");
+// submitForm.classList.add("hidden");
+
+// initsInput is equal to the initials input in the form.
+let initsInput = document.querySelector("#inits");
+// submitButton is equal to the "done" button.
+let submitButton = document.querySelector("#submit");
+// Hide the form initially.
 submitForm.style.display = "none";
 
-let initsInput = document.querySelector("#inits");
+// otherButtons is equal to the "other-buttons" section.
+let otherButtons = document.querySelector("#other-buttons");
+// Initially hide the "other-buttons" section.
+otherButtons.style.display = "none";
 
 let viewScores = document.querySelector("#view-scores");
-
 let tryAgain = document.querySelector("#try-again");
 
-// submitButton is equivalent to the "done" button.
-let submitButton = document.querySelector("#submit");
+
 // Initially hide the submitButton.
 // submitButton.style.display = "none";
 
@@ -115,6 +126,7 @@ startButton.addEventListener("click", function () {
     // Hide the start button
     startButton.style.display = "none";
     yourScore.style.display = "flex";
+    // otherButtons.style.display = "flex";
 });
 
 // The countDown function sets a timer that ticks down once per second until the seconds reach 0.
@@ -125,11 +137,12 @@ function countDown() {
 
         if (secondsLeft <= 0 || questionIndex === questionArray.length) {
             // If the seconds left are <= 0, show this message:
-            timeLeft.textContent = 'Nice work! Click the button below to view your score.';
+            timeLeft.textContent = 'Nice work! Record and submit your score below.';
             showQuestions.style.display = "none";
             showAnswers.style.display = "none";
             results.style.display = "none";
             submitForm.style.display = "block";
+            otherButtons.style.display = "inline-block";
             // submitButton.style.display = "inline-block";
             // Clear the timer once there's no time left.
             clearInterval(timer);
@@ -239,7 +252,11 @@ submitButton.onclick = function storeScores(event) {
     localStorage.setItem("userScores", JSON.stringify(highScoreArr));
     // Clear the initials input field.
     initsInput.value = '';
-
+    startGame.style.display = "none";
+    // timeLeft.style.display = "none";
+    submitForm.style.display = "none";
+    results.textContent = '';
+    // timeLeft.textContent = 'Click the "Start" button to begin the quiz.';
 }
 
 // View the high scores when the "View Scores" button is clicked.
@@ -260,7 +277,7 @@ viewScores.onclick = function () {
     tryAgain.style.display = "inline-block";
 }
 
-tryAgain.onclick = function () {
-    countDown();
-    displayQuestions();
+// Refresh the page to try the quiz again.
+tryAgain.onclick = function reload() {
+    reload = location.reload();
 }
