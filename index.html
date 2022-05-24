@@ -36,21 +36,22 @@
         <!-- High Scores Aside -->
         <aside id="high-scores">
             <h2>High Scores</h2>
-            <div id="view-high-scores"></div>
+            <ol id="view-high-scores"></ol>
         </aside>
 
         <!-- Submit Form -->
         <form action="" id="scores-form">
             <label for="initials">Enter Your Initials:</label>
             <input type="text" id="inits" placeholder="Enter your initials here."/><br />
-            <input type="button" value="Submit" id="submit"/>
-            <input type="button" value="View All Scores" id="view-scores">
+            <input class="form-btn" type="button" value="Submit" id="submit"/>
+            <input class="form-btn" type="button" value="View All Scores" id="view-scores">
+            <input class="form-btn" type="button" value="Try Again" id="try-again">
             <!-- <input type="button" value="Submit" id="submit"/> -->
         </form>
 
         <!-- <button class="submit">Submit</button> -->
-        <ol id="results"></ol>
     </main>
+    <ol id="results"></ol>
 
     <script src="./script.js"></script>
     <!-- <script src="./script2.js"></script> -->

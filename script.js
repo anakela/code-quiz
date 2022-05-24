@@ -83,20 +83,22 @@ let initsInput = document.querySelector("#inits");
 
 let viewScores = document.querySelector("#view-scores");
 
+let tryAgain = document.querySelector("#try-again");
+
 // submitButton is equivalent to the "done" button.
 let submitButton = document.querySelector("#submit");
 // Initially hide the submitButton.
 // submitButton.style.display = "none";
 
 
-// endGame is equivalent to the "end game" h2 tag.
-let endGame = document.querySelector("#end-game");
-// Initially hide the endGame h2 tag.
-// endGame.style.display = "none";
+// // endGame is equivalent to the "end game" h2 tag.
+// let endGame = document.querySelector("#end-game");
+// // Initially hide the endGame h2 tag.
+// // endGame.style.display = "none";
 // Initially hide the High Scores aside.
 let highScores = document.querySelector("#high-scores");
 highScores.style.display = "none";
-
+// viewHighScores is equal to the view-high-scores ordered list.
 let viewHighScores = document.querySelector("#view-high-scores");
 
 // Global array for objects
@@ -207,10 +209,7 @@ function displayQuestions() {
     console.log(displayQuestions);
 }
 
-
-
-// End the game when either the clock runs out, or the user goes through all questions.
-
+// Store the scores in localStorage when the "Submit" button is clicked.
 submitButton.onclick = function storeScores(event) {
     event.preventDefault();
     // Create an object to store initials and scores
@@ -221,7 +220,7 @@ submitButton.onclick = function storeScores(event) {
 
     // Parse data in localStorage in my highScoreArr array.
     highScoreArr = JSON.parse(localStorage.getItem("userScores"));
-    console.log(highScoreArr);
+    // console.log(highScoreArr);
     if (highScoreArr === null) {
         highScoreArr = [userScores];
     } else {
@@ -229,35 +228,39 @@ submitButton.onclick = function storeScores(event) {
             if (userScores.score >= highScoreArr[i].score) {
                 highScoreArr.splice(i, 0, userScores);
                 break;
-            } else if (i === highScoreArr.length-1 && userScores.score < highScoreArr[i]) {
+            } else if (i === highScoreArr.length - 1 && userScores.score < highScoreArr[i].score) {
                 highScoreArr.push(userScores);
                 break;
             }
         }
     }
-
     console.log(highScoreArr);
     // Store the initials and score in the object.
     localStorage.setItem("userScores", JSON.stringify(highScoreArr));
     // Clear the initials input field.
     initsInput.value = '';
+
 }
 
-viewScores.onclick = function (event) {
-    event.preventDefault();
+// View the high scores when the "View Scores" button is clicked.
+viewScores.onclick = function () {
     let highScoreArr2 = JSON.parse(localStorage.getItem("userScores"));
-    viewHighScores.innerHTML = highScoreArr2;
-    console.log(highScoreArr2[0].initials);
-    let scoreLineItem = document.createElement("li");
-    scoreLineItem.textContent(`${highScoreArr2[0].initials}: ${highScoreArr2[0].score}`);
-    results.appendChild(scoreLineItem);
-    highScores.style.display = "flex";
+    // viewHighScores.innerHTML = highScoreArr2;
+    for (let i = 0; i < 10 && i < highScoreArr2.length; i++) {
+        // Create list items for the scores.
+        let scoreLineItem = document.createElement("li");
+        // Replace the text content of the scoreLineItem with the submitted initials and scores.
+        scoreLineItem.textContent = (`${highScoreArr2[i].initials}: ${highScoreArr2[i].score}`);
+        // Append the scores to the view-high-scores unordered list.
+        viewHighScores.appendChild(scoreLineItem);
+    }
+    // Display the high scores ordered list as a block.
+    highScores.style.display = "block";
+    viewScores.style.display = "none";
+    tryAgain.style.display = "inline-block";
 }
 
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-// Present an alert or show that time is up
-
-// WHEN the game is over
-// THEN I can save my initials and score
-// Then, show the score and ability to input user initials in local storage
+tryAgain.onclick = function () {
+    countDown();
+    displayQuestions();
+}

@@ -100,6 +100,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 - [JSFiddle: Running Clock Demo](http://jsfiddle.net/alnitak/aBWce/)
 - [Stack Overflow: How do I get my for loop to go through my array of objects?](https://stackoverflow.com/questions/72336180/how-do-i-get-my-for-loop-to-go-through-my-array-of-objects) - I asked this question.
 - [MDN Web Docs: What is JavaScript?](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript)
+- [Storing and retrieving JavaScript objects in localStorage](https://blog.logrocket.com/storing-retrieving-javascript-objects-localstorage/)
 
 ## Author
 
@@ -110,8 +111,12 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Acknowledgments
 
-- Michael Harris
-- Asha Chakre
-- Robert M. Greene
+- Fellow Bootcampers:
+-- Michael Harris
+-- Asha Chakre
+-- Robert M. Greene
+-- Ivy Chang
+-- Nolan Spence
+-- James Montgomery
 - Scott Nelson (TA)
 - Bobbi Tarkany (Tutor)
