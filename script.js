@@ -58,6 +58,7 @@ const questionArray = [
 // Set to zero to target the first index in an array of objects.
 let questionIndex = 0;
 
+// startGame equals the the "start-game" section.
 let startGame = document.querySelector("#start-game");
 // startButton is equal to elements with the "start" class.  Here, button.
 let startButton = document.querySelector("#start");
@@ -67,20 +68,33 @@ let timeLeft = document.querySelector("#time-left");
 let showQuestions = document.querySelector("#show-questions");
 // showAnswers is equal to the elements in the "show-answers" class.  Here, a section.
 let showAnswers = document.querySelector("#show-answers");
-// yourScore is equal to the "scores" class.  Here, an aside.
+
+// asideContainer is equal to the aside in the HTML file.
+let asideContainer = document.querySelector(".container");
+// Initially hide the aside.
+asideContainer.style.display = "none";
+
+// yourScore is equal to the "scores" class.  Here, aside > div.
 let yourScore = document.querySelector("#your-score");
 // Initially hide the Your Scores aside.
 yourScore.style.display = "none";
+
+// highScores is equal to the "high-scores" id.  Here, aside > div.
+let highScores = document.querySelector("#high-scores");
+// Initially hide the High Scores aside.
+highScores.style.display = "none";
+
 // pointsCounter is equal to the "points-counter" span.
 let pointsCounter = document.querySelector("#points-counter");
 // Set current points to zero.
 let currentPoints = 0;
-// results is equal to the "results" id.  Here, a span.
-let results = document.querySelector("#results");
+// results is equal to the "results" id.  Here, aside > p.
+// let results = document.querySelector("#results");
 
 // submitForm is equal to the "scores-form" form.
 let submitForm = document.querySelector("#scores-form");
-// submitForm.classList.add("hidden");
+// Initially hide the scores form.
+submitForm.style.display = "none";
 
 // initsInput is equal to the initials input in the form.
 let initsInput = document.querySelector("#inits");
@@ -94,23 +108,12 @@ let otherButtons = document.querySelector("#other-buttons");
 // Initially hide the "other-buttons" section.
 otherButtons.style.display = "none";
 
+// Buttons in the "other-buttons" section.
 let viewScores = document.querySelector("#view-scores");
 let tryAgain = document.querySelector("#try-again");
 
-
-// Initially hide the submitButton.
-// submitButton.style.display = "none";
-
-
-// // endGame is equivalent to the "end game" h2 tag.
-// let endGame = document.querySelector("#end-game");
-// // Initially hide the endGame h2 tag.
-// // endGame.style.display = "none";
-// Initially hide the High Scores aside.
-let highScores = document.querySelector("#high-scores");
-highScores.style.display = "none";
 // viewHighScores is equal to the view-high-scores ordered list.
-let viewHighScores = document.querySelector("#view-high-scores");
+let viewHighScores = document.querySelector("#high-scores-list");
 
 // Global array for objects
 let highScoreArr;
@@ -125,7 +128,10 @@ startButton.addEventListener("click", function () {
     // endTheGame();
     // Hide the start button
     startButton.style.display = "none";
-    yourScore.style.display = "flex";
+    document.getElementById("desc").style.display = "none";
+    asideContainer.style.display = "flex";
+    yourScore.style.display = "block";
+    // yourScore.style.display = "flex";
     // otherButtons.style.display = "flex";
 });
 

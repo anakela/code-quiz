@@ -5,19 +5,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+    <title>Angie's JavaScript Quiz</title>
 </head>
 
 <body>
     <!-- Header -->
-    <header id="header">
+    <!-- <header id="header">
         
-    </header>
+    </header> -->
     <main id="main">
         <h1 id="question-title">JavaScript Quiz</h1>
+        <section id="desc">
+            <p>Ready to be challenged? You know you are! Here's how things are about to go down:</p>
+            <ul>
+                <li>Once you click the start button, you'll have 60 seconds to answer five JavaScript-related questions. ⏲️</li>
+                <li>If you get an answer right, you'll score 10 points! 🙌</li>
+                <li>If you get an answer wrong, you'll lose 10 seconds off the clock. 😱</li>
+            </ul>
+            <p>Ready to get crackin'?</p>
+        </section>
         <section id="start-game">
-            <h2 id="time-left">Click the "Start" button to begin the quiz.</h2>
+            <h2 id="time-left">Click the "Start" button to begin the quiz!</h2>
             <!-- <h2 id="end-game"></h2> -->
             <button id="start">Start</button>
         </section>
@@ -28,27 +40,11 @@
         <!-- Show Answers -->
         <section id="show-answers"></section>
 
-        <!-- Your Score Aside -->
-        <aside class="container" id="your-score">
-            <p>Your Score: </p>
-            <p id="points-counter"></p><br />
-            <p id="results"></p>
-        </aside>
-
-        <!-- High Scores Aside -->
-        <aside class="container" id="high-scores">
-            <h2>High Scores</h2>
-            <ol id="view-high-scores"></ol>
-        </aside>
-
         <!-- Submit Form -->
         <form action="" id="scores-form">
             <label for="initials" id="inits-label">Enter Your Initials:</label>
             <input type="text" id="inits" placeholder="Enter your initials here."/><br />
             <input class="form-btn" type="button" value="Submit" id="submit"/>
-            <!-- <input class="form-btn" type="button" value="View All Scores" id="view-scores">
-            <input class="form-btn" type="button" value="Try Again" id="try-again"> -->
-            <!-- <input type="button" value="Submit" id="submit"/> -->
         </form>
 
         <!-- View Scores & Try Again -->
@@ -59,6 +55,28 @@
 
         <!-- <button class="submit">Submit</button> -->
     </main>
+
+    
+    <aside class="container">
+        <!-- Your Score Div -->
+        <p id="results"></p>
+        <div id="your-score">
+            <h2>Your Score: </h2>
+            <p id="points-counter"></p>
+        </div>
+
+        <!-- High Scores Div -->
+        <div id="high-scores">
+            <h2>High Scores:</h2>
+            <ol id="high-scores-list"></ol>
+        </div>
+        
+    </aside>
+
+    <!-- High Scores Aside
+    <aside class="container" id="high-scores">
+        
+    </aside> -->
 
     <script src="./script.js"></script>
     <!-- <script src="./script2.js"></script> -->
