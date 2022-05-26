@@ -190,11 +190,6 @@ function displayQuestions() {
                 } else {
                     // Show scoreboard
                     pointsCounter.textContent = currentPoints;
-                    // End the game.
-                    // secondsLeft = 0;
-                    // timeLeft.textContent = 'Nice work! Click "Done" to enter your score.';
-                    // endTheGame();
-                    // displayQuestions();
                 }
                 // If the submission is not equal to Correct...
             } else {
@@ -214,11 +209,6 @@ function displayQuestions() {
                 } else {
                     // Show scoreboard
                     pointsCounter.textContent = currentPoints;
-                    // End the game.
-                    // secondsLeft = 0;
-                    // timeLeft.textContent = 'Nice work! Click the button below to enter your score.';
-                    // timeLeft.textContent = '';
-                    // endTheGame();
                 }
             }
         }
