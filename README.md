@@ -176,6 +176,7 @@ This was one of the most difficult assignments we've had in bootcamp yet, but I 
 - [How to print object by id in an array of objects in JavaScript?](https://www.geeksforgeeks.org/how-to-print-object-by-id-in-an-array-of-objects-in-javascript/)
 - [JavaScript Array of Objects Tutorial – How to Create, Update, and Loop Through Objects Using JS Array Methods](https://www.freecodecamp.org/news/javascript-array-of-objects-tutorial-how-to-create-update-and-loop-through-objects-using-js-array-methods/)
 - [How to access JSON object in JavaScript](https://mkyong.com/javascript/how-to-access-json-object-in-javascript/)
+- [Adobe Stock: Digital technology and science background.](https://stock.adobe.com/images/digital-technology-and-science-background/164562091?prev_url=detail)
 
 ## Author
 
